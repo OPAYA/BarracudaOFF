@@ -1,5 +1,6 @@
 using MediaPipe.BlazeFace;
 using MediaPipe.FaceLandmark;
+using MediaPipe.EmotionDetection;
 using MediaPipe.Iris;
 using UnityEngine;
 
@@ -16,6 +17,8 @@ sealed partial class FacePipeline : System.IDisposable
     ResourceSet _resources;
 
     FaceDetector _faceDetector;
+
+    EmotionDetector _emotionDetector;
 
     (FaceLandmarkDetector face,
      EyeLandmarkDetector eyeL,
@@ -42,6 +45,8 @@ sealed partial class FacePipeline : System.IDisposable
 
         _faceDetector = new FaceDetector(_resources.blazeFace);
 
+        _emotionDetector = new EmotionDetector(_resources.emotionDetection);
+
         _landmarkDetector =
           (new FaceLandmarkDetector(_resources.faceLandmark),
            new EyeLandmarkDetector(_resources.iris),
@@ -65,6 +70,8 @@ sealed partial class FacePipeline : System.IDisposable
     {
         _faceDetector.Dispose();
 
+        _emotionDetector.Dispose();
+
         _landmarkDetector.face.Dispose();
         _landmarkDetector.eyeL.Dispose();
         _landmarkDetector.eyeR.Dispose();
@@ -74,6 +81,7 @@ sealed partial class FacePipeline : System.IDisposable
         Object.Destroy(_cropRT.face);
         Object.Destroy(_cropRT.eyeL);
         Object.Destroy(_cropRT.eyeR);
+       // Object.Destroy(_cropRT.emotion);
 
         _computeBuffer.post.Dispose();
         _computeBuffer.filter.Dispose();

@@ -1,5 +1,6 @@
 using UnityEngine;
 
+
 namespace MediaPipe.FaceMesh {
 
 //
@@ -12,6 +13,7 @@ public sealed class ResourceSet : ScriptableObject
     public MediaPipe.BlazeFace.ResourceSet blazeFace;
     public MediaPipe.FaceLandmark.ResourceSet faceLandmark;
     public MediaPipe.Iris.ResourceSet iris;
+    public MediaPipe.EmotionDetection.ResourceSet emotionDetection;
 
     public Shader preprocessShader;
     public ComputeShader postprocessCompute;

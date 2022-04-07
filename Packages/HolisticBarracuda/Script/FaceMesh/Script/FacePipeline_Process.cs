@@ -37,6 +37,10 @@ partial class FacePipeline
         _preprocess.SetMatrix("_Xform", _faceRegion.CropMatrix);
         Graphics.Blit(input, _cropRT.face, _preprocess, 0);
 
+        // Face Emotion Detection
+        _emotionDetector.ProcessImage(_cropRT.face);
+        Debug.Log("emotion");
+
         // Face landmark detection
         _landmarkDetector.face.ProcessImage(_cropRT.face);
 

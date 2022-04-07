@@ -38,6 +38,13 @@ MonoBehaviour:
     - jp.ikep
     m_IsDefault: 0
     m_Capabilities: 0
+  - m_Id: scoped:jeff
+    m_Name: jeff
+    m_Url: https://registry.npmjs.com
+    m_Scopes:
+    - jp.off
+    m_IsDefault: 0
+    m_Capabilities: 0
   m_UserSelectedRegistryName: 
   m_UserAddingNewScopedRegistry: 0
   m_RegistryInfoDraft:
